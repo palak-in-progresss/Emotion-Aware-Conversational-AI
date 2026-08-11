@@ -1,0 +1,18 @@
+{
+    "champion_model": "SVM (RBF Kernel)",
+    "sample_rate": 22050,
+    "duration": 3.0,
+    "emotions": [
+        "angry",
+        "calm",
+        "disgust",
+        "fearful",
+        "happy",
+        "neutral",
+        "sad",
+        "surprised"
+    ],
+    "num_features": 162,
+    "accuracy": 53.89,
+    "macro_f1": 53.9
+}
