@@ -198,7 +198,7 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .card-header h2 {
@@ -209,6 +209,33 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--subtext-color);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.hud-textarea {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    padding: 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    outline: none;
+}
+
+.hud-textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px var(--glow-color);
 }
 
 /* Tabs */
@@ -250,7 +277,7 @@ body {
 /* Visualizer */
 .visualizer-container {
     position: relative;
-    height: 220px;
+    height: 180px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 16px;
     border: 1px dashed var(--border-color);
@@ -331,7 +358,7 @@ body {
 
 /* Dropzone */
 .drop-zone {
-    height: 220px;
+    height: 180px;
     border: 2px dashed var(--border-color);
     border-radius: 16px;
     display: flex;
@@ -383,23 +410,64 @@ audio {
     height: 36px;
 }
 
+/* Multimodal Breakdown Cards */
+.multimodal-breakdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.breakdown-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-icon {
+    font-size: 1.6rem;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.breakdown-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--subtext-color);
+}
+
+.breakdown-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
 /* Dominant Emotion Box */
 .dominant-box {
     text-align: center;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 16px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .dominant-label {
     font-size: 0.75rem;
     letter-spacing: 2px;
     color: var(--subtext-color);
+    font-weight: 700;
 }
 
 .dominant-value {
@@ -413,11 +481,38 @@ audio {
 
 .confidence-pill {
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-color);
     background: rgba(255, 255, 255, 0.1);
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 12px;
+}
+
+/* Empathetic Response Box */
+.empathetic-response-box {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid var(--glow-color);
+    border-radius: 14px;
+    padding: 14px 18px;
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+.response-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+    margin-bottom: 6px;
+}
+
+.response-text {
+    font-size: 0.95rem;
+    color: #f8fafc;
+    line-height: 1.5;
+    font-style: italic;
 }
 
 /* Analysis Split */
@@ -429,30 +524,30 @@ audio {
 }
 
 .chart-box {
-    height: 250px;
+    height: 220px;
 }
 
 .meters-box {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .meter-row {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 
 .meter-header {
     display: flex;
     justify-content: space-between;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
 }
 
 .meter-bar-bg {
-    height: 8px;
+    height: 7px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     overflow: hidden;
@@ -469,4 +564,5 @@ audio {
 @media (max-width: 900px) {
     .viora-grid { grid-template-columns: 1fr; }
     .analysis-split { grid-template-columns: 1fr; }
+    .multimodal-breakdown-grid { grid-template-columns: 1fr; }
 }

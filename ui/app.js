@@ -1,5 +1,5 @@
 // ==========================================
-// VIORA - Multimodal Sci-Fi HUD JavaScript Engine
+// VIORA - Sci-Fi HUD Multimodal JavaScript Engine
 // ==========================================
 
 const EMOTIONS = ["angry", "calm", "disgust", "fearful", "happy", "neutral", "sad", "surprised"];
@@ -124,7 +124,7 @@ function initMeters() {
     });
 }
 
-// 5. Audio Recorder
+// 5. Audio Recorder (Web Audio API)
 function initAudioRecorder() {
     const btnRecord = document.getElementById('btn-record');
     const btnStop = document.getElementById('btn-stop');
@@ -200,15 +200,15 @@ function initAnalyzeButton() {
         const textVal = textInput.value.trim();
 
         if (!selectedAudioBlob && !textVal) {
-            alert('Please type a text message or provide an audio input.');
+            alert('Please type a text message or record audio to analyze.');
             return;
         }
 
         btnAnalyze.disabled = true;
-        btnAnalyze.textContent = '⏳ RUNNING MULTIMODAL PIPELINE...';
+        btnAnalyze.textContent = '⏳ PROCESSING MULTIMODAL PIPELINE...';
 
         try {
-            let response = None;
+            let response = null;
             if (selectedAudioBlob) {
                 const formData = new FormData();
                 formData.append('audio', selectedAudioBlob, 'voice.wav');
@@ -244,9 +244,26 @@ function updateResults(data) {
     document.getElementById('dominant-emotion').textContent = dominant;
     document.getElementById('confidence-pill').textContent = `${conf}% CONFIDENCE`;
 
-    if (data.voice) document.getElementById('voice-emotion-badge').textContent = data.voice.emotion.toUpperCase();
-    if (data.text) document.getElementById('text-emotion-badge').textContent = data.text.emotion.toUpperCase();
-    if (data.response) document.getElementById('ai-response-text').textContent = `"${data.response}"`;
+    // Voice Breakdown Badge
+    if (data.voice && data.voice.emotion && data.voice.emotion !== "N/A") {
+        const vConf = (data.voice.confidence * 100).toFixed(0);
+        document.getElementById('voice-emotion-badge').textContent = `${data.voice.emotion.toUpperCase()} (${vConf}%)`;
+    } else {
+        document.getElementById('voice-emotion-badge').textContent = "NONE";
+    }
+
+    // Text Breakdown Badge
+    if (data.text && data.text.emotion && data.text.emotion !== "N/A") {
+        const tConf = (data.text.confidence * 100).toFixed(0);
+        document.getElementById('text-emotion-badge').textContent = `${data.text.emotion.toUpperCase()} (${tConf}%)`;
+    } else {
+        document.getElementById('text-emotion-badge').textContent = "NONE";
+    }
+
+    // Empathetic Response
+    if (data.response) {
+        document.getElementById('ai-response-text').textContent = `"${data.response}"`;
+    }
 
     // Update Radar Chart
     const values = EMOTIONS.map(e => probs[e] || 0);
@@ -277,8 +294,8 @@ function simulateResults(textVal) {
         final_emotion: randomEmotion,
         confidence: mockProbs[randomEmotion],
         probabilities: mockProbs,
-        voice: { emotion: "N/A" },
-        text: { emotion: randomEmotion },
-        response: "It sounds like you may be going through a meaningful moment. I am here to support you."
+        voice: { emotion: "sad", confidence: 0.62 },
+        text: { emotion: "sad", confidence: 0.78 },
+        response: "It sounds like you may be going through a heavy moment right now. Remember to take things one step at a time."
     });
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIORA - Multimodal Emotion-Aware Conversational AI</title>
+    <title>VIORA — Multimodal Emotion-Aware Conversational AI</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,15 +52,15 @@
                 </div>
 
                 <!-- Text Message Prompt Input -->
-                <div class="text-input-group" style="margin-bottom: 20px;">
-                    <label style="color: #94a3b8; font-size: 11px; font-weight: 600; letter-spacing: 1px; margin-bottom: 6px; display: block;">TEXT INPUT MESSAGE</label>
-                    <textarea id="text-input" placeholder="Type a message or speak into the microphone..." rows="3" style="width: 100%; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #f8fafc; padding: 10px; font-family: 'Outfit', sans-serif; resize: vertical;"></textarea>
+                <div class="text-input-group">
+                    <label class="section-label">💬 TYPE A TEXT MESSAGE</label>
+                    <textarea id="text-input" placeholder="Enter what you want to say... (e.g., 'I am so happy I passed my exam!')" rows="3" class="hud-textarea"></textarea>
                 </div>
 
                 <!-- Input Method Tabs -->
                 <div class="tabs">
-                    <button class="tab-btn active" id="tab-mic">Live Microphone</button>
-                    <button class="tab-btn" id="tab-file">Upload Audio</button>
+                    <button class="tab-btn active" id="tab-mic">🎤 Live Microphone</button>
+                    <button class="tab-btn" id="tab-file">📁 Upload Audio File</button>
                 </div>
 
                 <!-- Mic Container -->
@@ -82,8 +82,8 @@
                 <div id="file-view" class="tab-content">
                     <div class="drop-zone" id="drop-zone">
                         <span class="upload-icon">📁</span>
-                        <p>Drag & Drop WAV/MP3 file here</p>
-                        <span class="sub-text">or click to browse</span>
+                        <p>Drag & Drop WAV/MP3 audio clip here</p>
+                        <span class="sub-text">or click to browse local files</span>
                         <input type="file" id="file-input" accept="audio/*">
                     </div>
                 </div>
@@ -101,32 +101,46 @@
             <!-- Right Column: Multimodal Intelligence & Empathetic Response -->
             <section class="hud-card output-card">
                 <div class="card-header">
-                    <h2><span class="icon">🧠</span> MULTIMODAL INTELLIGENCE</h2>
+                    <h2><span class="icon">🧠</span> HOW VIORA UNDERSTOOD YOU</h2>
                 </div>
 
-                <!-- Dominant Emotion Badges -->
+                <!-- Multimodal Modality Breakdown Grid -->
+                <div class="multimodal-breakdown-grid">
+                    <!-- Voice Emotion Card -->
+                    <div class="breakdown-card voice-card">
+                        <div class="card-icon">🎤</div>
+                        <div class="card-info">
+                            <span class="breakdown-label">VOICE EMOTION</span>
+                            <strong class="breakdown-value" id="voice-emotion-badge">AWAITING AUDIO</strong>
+                        </div>
+                    </div>
+
+                    <!-- Text Emotion Card -->
+                    <div class="breakdown-card text-card">
+                        <div class="card-icon">💬</div>
+                        <div class="card-info">
+                            <span class="breakdown-label">TEXT EMOTION</span>
+                            <strong class="breakdown-value" id="text-emotion-badge">AWAITING TEXT</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dominant Fused Emotion Box -->
                 <div class="dominant-box">
-                    <span class="dominant-label">FINAL FUSED EMOTION</span>
+                    <span class="dominant-label">🔀 FINAL FUSED EMOTION</span>
                     <div class="dominant-value" id="dominant-emotion">AWAITING INPUT</div>
                     <div class="confidence-pill" id="confidence-pill">0.0% CONFIDENCE</div>
                 </div>
 
-                <!-- Modality Breakdown Badges -->
-                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <div style="flex: 1; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
-                        <span style="font-size: 10px; color: #94a3b8; display: block;">VOICE EMOTION</span>
-                        <strong id="voice-emotion-badge" style="color: #00f3ff; font-size: 14px;">N/A</strong>
-                    </div>
-                    <div style="flex: 1; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
-                        <span style="font-size: 10px; color: #94a3b8; display: block;">TEXT EMOTION</span>
-                        <strong id="text-emotion-badge" style="color: #00f3ff; font-size: 14px;">N/A</strong>
-                    </div>
-                </div>
-
                 <!-- Empathetic AI Response Box -->
-                <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glow-color); border-radius: 8px; padding: 12px; margin-bottom: 15px;">
-                    <span style="color: #94a3b8; font-size: 10px; font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 4px;">💬 EMPATHETIC AI RESPONSE</span>
-                    <p id="ai-response-text" style="color: #f8fafc; font-size: 13px; margin: 0; line-height: 1.4;">"Hello! Enter text or record audio to begin an emotion-aware conversation."</p>
+                <div class="empathetic-response-box">
+                    <div class="response-header">
+                        <span class="icon">💬</span>
+                        <span>EMPATHETIC AI RESPONSE</span>
+                    </div>
+                    <p id="ai-response-text" class="response-text">
+                        "Speak into the microphone or type a message above to experience VIORA's multimodal emotion-aware intelligence."
+                    </p>
                 </div>
 
                 <!-- Radar & Progress Split -->
