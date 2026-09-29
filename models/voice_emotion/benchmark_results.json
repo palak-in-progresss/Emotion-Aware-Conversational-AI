@@ -1,0 +1,96 @@
+{
+  "validation_summary": [
+    {
+      "Architecture": "RBF SVM (C=10.0, gamma=0.001)",
+      "Val Macro F1": "48.32%",
+      "Val Weighted F1": "49.06%",
+      "Val Accuracy": "50.42%",
+      "Val Bal Accuracy": "50.39%"
+    },
+    {
+      "Architecture": "ExtraTrees (300 trees)",
+      "Val Macro F1": "39.92%",
+      "Val Weighted F1": "41.31%",
+      "Val Accuracy": "42.50%",
+      "Val Bal Accuracy": "40.62%"
+    },
+    {
+      "Architecture": "RandomForest (300 trees)",
+      "Val Macro F1": "39.21%",
+      "Val Weighted F1": "40.61%",
+      "Val Accuracy": "41.25%",
+      "Val Bal Accuracy": "39.45%"
+    },
+    {
+      "Architecture": "HistGradientBoosting (lr=0.05)",
+      "Val Macro F1": "44.51%",
+      "Val Weighted F1": "45.52%",
+      "Val Accuracy": "46.25%",
+      "Val Bal Accuracy": "45.70%"
+    },
+    {
+      "Architecture": "MLP Neural Net (256x128)",
+      "Val Macro F1": "44.13%",
+      "Val Weighted F1": "45.67%",
+      "Val Accuracy": "46.25%",
+      "Val Bal Accuracy": "44.92%"
+    }
+  ],
+  "champion_architecture": "RBF SVM (C=10.0, gamma=0.001)",
+  "final_test_metrics": {
+    "accuracy": 0.5305555555555556,
+    "balanced_accuracy": 0.515625,
+    "macro_f1": 0.5145073158388016,
+    "weighted_f1": 0.5285179484889246,
+    "per_class": {
+      "angry": {
+        "precision": 0.39436619718309857,
+        "recall": 0.5833333333333334,
+        "f1_score": 0.47058823529411764,
+        "support": 48
+      },
+      "calm": {
+        "precision": 0.7857142857142857,
+        "recall": 0.6875,
+        "f1_score": 0.7333333333333333,
+        "support": 48
+      },
+      "disgust": {
+        "precision": 0.5161290322580645,
+        "recall": 0.6666666666666666,
+        "f1_score": 0.5818181818181818,
+        "support": 48
+      },
+      "fearful": {
+        "precision": 0.59375,
+        "recall": 0.3958333333333333,
+        "f1_score": 0.475,
+        "support": 48
+      },
+      "happy": {
+        "precision": 0.5370370370370371,
+        "recall": 0.6041666666666666,
+        "f1_score": 0.5686274509803921,
+        "support": 48
+      },
+      "neutral": {
+        "precision": 0.3181818181818182,
+        "recall": 0.2916666666666667,
+        "f1_score": 0.30434782608695654,
+        "support": 24
+      },
+      "sad": {
+        "precision": 0.3333333333333333,
+        "recall": 0.25,
+        "f1_score": 0.2857142857142857,
+        "support": 48
+      },
+      "surprised": {
+        "precision": 0.7560975609756098,
+        "recall": 0.6458333333333334,
+        "f1_score": 0.6966292134831461,
+        "support": 48
+      }
+    }
+  }
+}

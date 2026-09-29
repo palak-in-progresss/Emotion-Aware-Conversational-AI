@@ -17,7 +17,13 @@ Thumbs.db
 *.log
 database/*.db
 
-# Temporary archives
+# Datasets & Feature Caches (Large files)
+datasets/real_ravdess/
+datasets/crema_d/
+datasets/audio/
+*.joblib
+
+# Temporary archives & Scratch
 *.zip
 *.tar.gz
 scratch/

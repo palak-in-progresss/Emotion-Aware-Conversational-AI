@@ -1,0 +1,5 @@
+Configuration,Dataset,Train Size,Features,Model Architecture,Macro F1,Accuracy
+V1 Baseline,Real RAVDESS,1080 clips,162,SVM RBF (C=1.0),53.90%,53.89%
+V2 Representation,Real RAVDESS,1080 clips,342,SVM RBF (C=1.0),52.70%,54.44%
+Champion Model,Real RAVDESS,1080 clips,342,"RBF SVM (C=10.0, gamma=0.001)",51.45%,53.06%
+Best Expanded Model,Real RAVDESS + CREMA-D,2080 clips,342,"SVM RBF (C=10.0, g=0.001)",53.69%,54.17%

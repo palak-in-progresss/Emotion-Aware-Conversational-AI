@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIORA - Multimodal Emotion-Aware Conversational AI</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chart.js for Radar Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-cyan">
+
+    <div class="viora-container">
+        <!-- Top Navigation Header -->
+        <header class="viora-header">
+            <div class="brand-group">
+                <div class="logo-orb"></div>
+                <div>
+                    <h1 class="brand-title">V I O R A</h1>
+                    <p class="brand-sub">MULTIMODAL EMOTION-AWARE INTELLIGENCE</p>
+                </div>
+            </div>
+
+            <!-- Theme Switcher -->
+            <div class="theme-selector">
+                <span class="theme-label">HUD COLOR:</span>
+                <div class="theme-swatches">
+                    <button class="swatch cyan active" data-theme="theme-cyan" title="VIORA Cyan"></button>
+                    <button class="swatch purple" data-theme="theme-purple" title="Amethyst Purple"></button>
+                    <button class="swatch emerald" data-theme="theme-emerald" title="Bio Emerald"></button>
+                    <button class="swatch amber" data-theme="theme-amber" title="Solar Gold"></button>
+                    <button class="swatch crimson" data-theme="theme-crimson" title="Crimson Pulse"></button>
+                </div>
+            </div>
+
+            <div class="status-badge">
+                <span class="pulse-dot"></span>
+                SYSTEM ONLINE
+            </div>
+        </header>
+
+        <!-- Main Dashboard Layout -->
+        <main class="viora-grid">
+            <!-- Left Column: Audio & Text Inputs -->
+            <section class="hud-card input-card">
+                <div class="card-header">
+                    <h2><span class="icon">🎙️</span> MULTIMODAL INPUT CONTROL</h2>
+                </div>
+
+                <!-- Text Message Prompt Input -->
+                <div class="text-input-group" style="margin-bottom: 20px;">
+                    <label style="color: #94a3b8; font-size: 11px; font-weight: 600; letter-spacing: 1px; margin-bottom: 6px; display: block;">TEXT INPUT MESSAGE</label>
+                    <textarea id="text-input" placeholder="Type a message or speak into the microphone..." rows="3" style="width: 100%; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #f8fafc; padding: 10px; font-family: 'Outfit', sans-serif; resize: vertical;"></textarea>
+                </div>
+
+                <!-- Input Method Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" id="tab-mic">Live Microphone</button>
+                    <button class="tab-btn" id="tab-file">Upload Audio</button>
+                </div>
+
+                <!-- Mic Container -->
+                <div id="mic-view" class="tab-content active">
+                    <div class="visualizer-container">
+                        <canvas id="audio-visualizer"></canvas>
+                        <div class="orb-center" id="orb-status">
+                            <span class="mic-icon">🎙️</span>
+                            <span id="record-timer">00:00</span>
+                        </div>
+                    </div>
+                    <div class="controls-group">
+                        <button id="btn-record" class="btn btn-primary">START RECORDING</button>
+                        <button id="btn-stop" class="btn btn-secondary" disabled>STOP</button>
+                    </div>
+                </div>
+
+                <!-- File Upload Container -->
+                <div id="file-view" class="tab-content">
+                    <div class="drop-zone" id="drop-zone">
+                        <span class="upload-icon">📁</span>
+                        <p>Drag & Drop WAV/MP3 file here</p>
+                        <span class="sub-text">or click to browse</span>
+                        <input type="file" id="file-input" accept="audio/*">
+                    </div>
+                </div>
+
+                <!-- Audio Playback Preview -->
+                <div class="audio-playback-container" id="playback-box" style="display: none;">
+                    <label>AUDIO PREVIEW</label>
+                    <audio id="audio-player" controls></audio>
+                </div>
+
+                <!-- Analyze Button -->
+                <button id="btn-analyze" class="btn btn-action">🚀 PROCESS MULTIMODAL PIPELINE</button>
+            </section>
+
+            <!-- Right Column: Multimodal Intelligence & Empathetic Response -->
+            <section class="hud-card output-card">
+                <div class="card-header">
+                    <h2><span class="icon">🧠</span> MULTIMODAL INTELLIGENCE</h2>
+                </div>
+
+                <!-- Dominant Emotion Badges -->
+                <div class="dominant-box">
+                    <span class="dominant-label">FINAL FUSED EMOTION</span>
+                    <div class="dominant-value" id="dominant-emotion">AWAITING INPUT</div>
+                    <div class="confidence-pill" id="confidence-pill">0.0% CONFIDENCE</div>
+                </div>
+
+                <!-- Modality Breakdown Badges -->
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <div style="flex: 1; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                        <span style="font-size: 10px; color: #94a3b8; display: block;">VOICE EMOTION</span>
+                        <strong id="voice-emotion-badge" style="color: #00f3ff; font-size: 14px;">N/A</strong>
+                    </div>
+                    <div style="flex: 1; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                        <span style="font-size: 10px; color: #94a3b8; display: block;">TEXT EMOTION</span>
+                        <strong id="text-emotion-badge" style="color: #00f3ff; font-size: 14px;">N/A</strong>
+                    </div>
+                </div>
+
+                <!-- Empathetic AI Response Box -->
+                <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glow-color); border-radius: 8px; padding: 12px; margin-bottom: 15px;">
+                    <span style="color: #94a3b8; font-size: 10px; font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 4px;">💬 EMPATHETIC AI RESPONSE</span>
+                    <p id="ai-response-text" style="color: #f8fafc; font-size: 13px; margin: 0; line-height: 1.4;">"Hello! Enter text or record audio to begin an emotion-aware conversation."</p>
+                </div>
+
+                <!-- Radar & Progress Split -->
+                <div class="analysis-split">
+                    <!-- Radar Chart -->
+                    <div class="chart-box">
+                        <canvas id="emotion-radar"></canvas>
+                    </div>
+
+                    <!-- Emotion Meters -->
+                    <div class="meters-box" id="meters-container">
+                        <!-- Dynamically filled by app.js -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

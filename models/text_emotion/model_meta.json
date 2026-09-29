@@ -1,0 +1,17 @@
+{
+  "model_type": "TF-IDF + LogisticRegression",
+  "dataset": "dair-ai/emotion + Google GoEmotions (61,627 samples)",
+  "num_classes": 8,
+  "raw_classes": [
+    "Joy",
+    "Sadness",
+    "Anger",
+    "Fear",
+    "Surprise",
+    "Love",
+    "Disgust",
+    "Neutral"
+  ],
+  "val_accuracy": 0.6899237384390718,
+  "val_macro_f1": 0.6411496073502612
+}

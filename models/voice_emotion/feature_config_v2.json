@@ -1,0 +1,30 @@
+{
+  "version": "v2.0",
+  "emotions": [
+    "angry",
+    "calm",
+    "disgust",
+    "fearful",
+    "happy",
+    "neutral",
+    "sad",
+    "surprised"
+  ],
+  "num_features": 342,
+  "feature_sets": [
+    "MFCC (80)",
+    "Delta MFCC (80)",
+    "Delta2 MFCC (80)",
+    "F0 Pitch Stats (6)",
+    "RMS Energy Stats (4)",
+    "Spectral Centroid (4)",
+    "Spectral Bandwidth (4)",
+    "Spectral Rolloff (4)",
+    "Spectral Contrast (28)",
+    "Chroma STFT (48)",
+    "ZCR (4)"
+  ],
+  "model_type": "SVC-RBF",
+  "sample_rate": 22050,
+  "duration": 3.0
+}

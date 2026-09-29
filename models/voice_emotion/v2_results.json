@@ -1,0 +1,353 @@
+{
+  "experiment": "V1 vs V2 Feature Engineering",
+  "v1_metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "per_class": {
+      "angry": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "calm": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "disgust": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "fearful": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "happy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "neutral": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "sad": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "surprised": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      }
+    },
+    "confusion_matrix": {
+      "angry": [
+        24,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "calm": [
+        0,
+        24,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "disgust": [
+        0,
+        0,
+        24,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fearful": [
+        0,
+        0,
+        0,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "happy": [
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0,
+        0
+      ],
+      "neutral": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      "sad": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0
+      ],
+      "surprised": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24
+      ]
+    }
+  },
+  "v2_metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "per_class": {
+      "angry": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "calm": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "disgust": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "fearful": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "happy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "neutral": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "sad": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      },
+      "surprised": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24
+      }
+    },
+    "confusion_matrix": {
+      "angry": [
+        24,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "calm": [
+        0,
+        24,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "disgust": [
+        0,
+        0,
+        24,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fearful": [
+        0,
+        0,
+        0,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "happy": [
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0,
+        0
+      ],
+      "neutral": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      "sad": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0
+      ],
+      "surprised": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24
+      ]
+    }
+  },
+  "comparison_table": [
+    {
+      "Metric": "Macro F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Weighted F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Accuracy",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Balanced Accuracy",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Angry F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Calm F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Disgust F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Fearful F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Happy F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Neutral F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Sad F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    },
+    {
+      "Metric": "Surprised F1",
+      "V1 (162 Feats)": "100.00%",
+      "V2 (338 Feats)": "100.00%",
+      "Delta": "+0.00%"
+    }
+  ]
+}
