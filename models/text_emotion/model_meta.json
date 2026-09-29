@@ -1,0 +1,7 @@
+{
+  "model_type": "tfidf_logreg",
+  "num_classes": 8,
+  "val_accuracy": 0.6963,
+  "val_macro_f1": 0.641,
+  "train_time_s": 83.9
+}
