@@ -1,23 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "ui/**/*",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "api/**/*.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/ui/$1"
-    }
+  "outputDirectory": "ui",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://viora-ai.onrender.com/api/:path*" }
   ]
 }

@@ -23,6 +23,14 @@ class VioraRequestHandler(SimpleHTTPRequestHandler):
         ui_directory = os.path.join(PROJECT_ROOT, "ui")
         super().__init__(*args, directory=ui_directory, **kwargs)
 
+    def do_OPTIONS(self):
+        """CORS Preflight Handler for cross-origin AJAX POST requests."""
+        self.send_response(204)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
+
     def do_POST(self):
         if self.path in ['/api/predict', '/api/multimodal']:
             content_length = int(self.headers.get('Content-Length', 0))
@@ -69,11 +77,11 @@ class VioraRequestHandler(SimpleHTTPRequestHandler):
         else:
             self.send_error(404, "Endpoint Not Found")
 
-def run_server(port=config.SERVER_PORT):
+def run_server(port=int(os.environ.get("PORT", config.SERVER_PORT))):
     server_address = ('', port)
     httpd = HTTPServer(server_address, VioraRequestHandler)
     print("==================================================")
-    print(f"[VIORA] Web HUD Server Running at: http://localhost:{port}")
+    print(f"[VIORA] Web Server Running on Port {port}")
     print("==================================================")
     try:
         httpd.serve_forever()
