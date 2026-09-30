@@ -1,5 +1,4 @@
 {
-  "outputDirectory": "ui",
   "rewrites": [
     { "source": "/api/:path*", "destination": "https://viora-ai.onrender.com/api/:path*" }
   ]
