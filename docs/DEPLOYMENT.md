@@ -1,6 +1,6 @@
-# 🚀 VIORA — Production Deployment Guide
+# 🚀 VIORA — Production Deployment Guide (Vercel, Render, Railway, Hugging Face)
 
-This guide details how to deploy VIORA (Frontend HUD + Backend Multimodal ML Engine) to cloud platforms such as **Render**, **Railway**, or **Hugging Face Spaces**.
+This guide details how to deploy VIORA to cloud platforms including **Vercel**, **Render**, **Railway**, and **Hugging Face Spaces**.
 
 ---
 
@@ -14,7 +14,32 @@ This guide details how to deploy VIORA (Frontend HUD + Backend Multimodal ML Eng
 
 ---
 
-## ☁️ 2. Option A: Deploying on Render (Recommended)
+## ⚡ 2. Deploying on Vercel
+
+Vercel is fully supported using Vercel Python Serverless Functions (`@vercel/python` engine configured in [`vercel.json`](../vercel.json) and [`api/index.py`](../api/index.py)).
+
+### Option A: Pure Vercel (Frontend + Serverless Python API)
+
+1. Install the Vercel CLI or link via GitHub:
+   ```bash
+   npx vercel
+   ```
+2. Vercel automatically detects `vercel.json`:
+   - Static HUD Frontend served from `ui/`
+   - Python ML API served from `api/index.py` (`/api/predict` & `/api/multimodal`)
+
+> [!NOTE]
+> **Vercel Memory & Timeout Consideration**: On Vercel's free hobby tier, serverless function execution is capped at **10 seconds max duration**. Text predictions execute in ~0.1s. For heavy audio feature extraction (`librosa` YIN algorithm on long WAV files), Render or Railway provide dedicated non-serverless RAM/CPU resources.
+
+### Option B: Hybrid Vercel (Frontend on Vercel + Backend on Render/Railway)
+
+1. Deploy the Python ML server (`server.py`) to Render or Railway (`https://viora-backend.onrender.com`).
+2. Deploy the static UI (`ui/`) to Vercel.
+3. Update `ui/app.js` API fetch URL to point to your deployed backend URL.
+
+---
+
+## ☁️ 3. Deploying on Render (Recommended for Full Python Servers)
 
 1. **Connect GitHub Repository**:
    - Log into [Render Dashboard](https://dashboard.render.com).
@@ -23,44 +48,31 @@ This guide details how to deploy VIORA (Frontend HUD + Backend Multimodal ML Eng
 
 2. **Configure Web Service**:
    - **Environment**: `Python 3`
-   - **Build Command**:
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - **Start Command**:
-     ```bash
-     python server.py
-     ```
-   - **Instance Type**: Free Tier (512 MB RAM / 0.1 CPU is sufficient).
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `python server.py`
+   - **Instance Type**: Free Tier.
 
 3. **Verify Deployment**:
-   - Render will deploy the web server at `https://viora-app.onrender.com`.
-   - Access the interactive HUD in any web browser!
+   - Render serves the complete web HUD & API at `https://viora-app.onrender.com`.
 
 ---
 
-## 🚂 3. Option B: Deploying on Railway
+## 🚂 4. Deploying on Railway
 
-1. **New Project**:
-   - Log into [Railway.app](https://railway.app).
-   - Click **New Project** $\rightarrow$ **Deploy from GitHub repo**.
-   - Select `VIORA`.
-
-2. **Environment Variables & Start Command**:
-   - Set start command to `python server.py`.
-   - Railway will auto-detect Python and install dependencies from `requirements.txt`.
+1. Log into [Railway.app](https://railway.app).
+2. Click **New Project** $\rightarrow$ **Deploy from GitHub repo**.
+3. Set start command to `python server.py`.
 
 ---
 
-## 🎯 4. Option C: Deploying on Hugging Face Spaces
+## 🎯 5. Deploying on Hugging Face Spaces
 
-1. Create a new Space on [Hugging Face](https://huggingface.co/spaces) selecting the **Docker** or **Streamlit/Gradio** SDK.
+1. Create a Docker or Streamlit Space on [Hugging Face Spaces](https://huggingface.co/spaces).
 2. Push your repository to HF Spaces.
-3. Your deployment link `https://huggingface.co/spaces/<user>/viora` will serve the multimodal HUD.
 
 ---
 
-## 🧪 5. Post-Deployment Verification Checklist
+## 🧪 6. Post-Deployment Verification Checklist
 
 Verify:
 - [x] `https://<deployed-url>/` loads Sci-Fi HUD dashboard.
